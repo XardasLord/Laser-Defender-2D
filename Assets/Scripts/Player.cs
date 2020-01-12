@@ -1,4 +1,4 @@
-﻿using System.Net;
+﻿using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -9,11 +9,13 @@ namespace Assets.Scripts
         [SerializeField] private float padding = 1f;
         [SerializeField] private GameObject laserPrefab;
         [SerializeField] private float projectileSpeed = 10f;
+        [SerializeField] private float projectileFiringPeriod = 0.1f;
 
-            private float _xMin;
+        private float _xMin;
         private float _xMax;
         private float _yMin;
         private float _yMax;
+        private Coroutine _firingCoroutine;
 
         // Start is called before the first frame update
         private void Start()
@@ -43,12 +45,27 @@ namespace Assets.Scripts
         {
             if (Input.GetButtonDown("Fire1"))
             {
+                _firingCoroutine = StartCoroutine(FireContinuously());
+            }
+
+            if (Input.GetButtonUp("Fire1"))
+            {
+                StopCoroutine(_firingCoroutine);
+            }
+        }
+
+        IEnumerator FireContinuously()
+        {
+            while (true)
+            {
                 var laser = Instantiate(
-                    laserPrefab, 
-                    transform.position, 
+                    laserPrefab,
+                    transform.position,
                     Quaternion.identity);
 
                 laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, projectileSpeed);
+
+                yield return new WaitForSeconds(projectileFiringPeriod);
             }
         }
 
