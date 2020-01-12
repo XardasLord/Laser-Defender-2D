@@ -5,16 +5,14 @@ namespace Assets.Scripts
 {
     public class EnemyPathing : MonoBehaviour
     {
-        [SerializeField] private WaveConfig waveConfig;
-        [SerializeField] private float moveSpeed = 2f;
-
+        private WaveConfig _waveConfig;
         private List<Transform> _waypoints;
         private int _currentWaypointIndex = 0;
 
         // Start is called before the first frame update
         void Start()
         {
-            _waypoints = waveConfig.GetWaypoints();
+            _waypoints = _waveConfig.GetWaypoints();
             transform.position = _waypoints[_currentWaypointIndex].position;
         }
 
@@ -24,12 +22,17 @@ namespace Assets.Scripts
             Move();
         }
 
+        public void SetWaveConfig(WaveConfig waveConfig)
+        {
+            _waveConfig = waveConfig;
+        }
+
         private void Move()
         {
             if (_currentWaypointIndex <= _waypoints.Count - 1)
             {
                 var targetPosition = _waypoints[_currentWaypointIndex].position;
-                var movementThisFrame = moveSpeed * Time.deltaTime;
+                var movementThisFrame = _waveConfig.GetMoveSpeed() * Time.deltaTime;
 
                 transform.position = Vector2.MoveTowards(transform.position, targetPosition, movementThisFrame);
 
