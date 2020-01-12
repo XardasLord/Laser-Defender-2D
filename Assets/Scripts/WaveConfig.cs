@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Assets.Scripts
 {
@@ -13,7 +14,18 @@ namespace Assets.Scripts
         [SerializeField] private float moveSpeed = 2f;
 
         public GameObject GetEnemyPrefab() => enemyPrefab;
-        public GameObject GetPathPrefab() => pathPrefab;
+
+        public List<Transform> GetWaypoints()
+        {
+            var waveWaypoints = new List<Transform>();
+            foreach (Transform child in pathPrefab.transform)
+            {
+                waveWaypoints.Add(child);
+            }
+
+            return waveWaypoints;
+        }
+
         public float GetTimeBetweenSpawns() => timeBetweenSpawns;
         public float GetSpawnRandomFactor() => spawnRandomFactor;
         public int GetNumberOfEnemies() => numberOfEnemies;
