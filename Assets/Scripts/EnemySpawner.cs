@@ -21,7 +21,7 @@ namespace Assets.Scripts
 
         private IEnumerator SpawnAllWaves()
         {
-            for (int i = 0; i < waveConfigs.Count; i++)
+            for (var i = startingWave; i < waveConfigs.Count; i++)
             {
                 var currentWave = waveConfigs[i];
                 yield return StartCoroutine(SpawnAllEnemiesInWave(currentWave));

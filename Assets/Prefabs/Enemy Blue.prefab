@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 4118395634425156307}
   - component: {fileID: 4118395634425156306}
   - component: {fileID: 8621453121357828064}
+  - component: {fileID: 4855541191690926177}
+  - component: {fileID: 3182801775843011516}
   m_Layer: 0
   m_Name: Enemy Blue
   m_TagString: Untagged
@@ -93,3 +95,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30abce00ddff3c046a17996d043f6528, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4855541191690926177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4118395634425156305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5525e7cafd8a874199dd16506520bd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 200
+--- !u!58 &3182801775843011516
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4118395634425156305}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.022923708}
+  serializedVersion: 2
+  m_Radius: 0.35887027
