@@ -5,8 +5,12 @@ namespace Assets.Scripts
 {
     public class Player : MonoBehaviour
     {
+        [Header("Player")]
         [SerializeField] private float moveSpeed = 8f;
         [SerializeField] private float padding = 1f;
+        [SerializeField] private int health = 200;
+
+        [Header("Projectile")]
         [SerializeField] private GameObject laserPrefab;
         [SerializeField] private float projectileSpeed = 10f;
         [SerializeField] private float projectileFiringPeriod = 0.1f;
@@ -28,6 +32,17 @@ namespace Assets.Scripts
         {
             Move();
             Fire();
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            var damageDealer = other.gameObject.GetComponent<DamageDealer>();
+            if (!damageDealer)
+            {
+                return;
+            }
+
+            ProcessHit(damageDealer);
         }
 
         private void Move()
@@ -76,6 +91,17 @@ namespace Assets.Scripts
             _xMax = gameCamera.ViewportToWorldPoint(new Vector3(1, 0, 0)).x - padding;
             _yMin = gameCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).y + padding;
             _yMax = gameCamera.ViewportToWorldPoint(new Vector3(0, 1, 0)).y - padding;
+        }
+
+        private void ProcessHit(DamageDealer damageDealer)
+        {
+            damageDealer.Hit();
+            health -= damageDealer.Damage;
+
+            if (health <= 0)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
