@@ -746,11 +746,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 9042999755172361353, guid: deb27ab5601580448bf7d9b2d58e991b,
-        type: 3}
-      propertyPath: projectileFiringPeriod
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 9042999755172361358, guid: deb27ab5601580448bf7d9b2d58e991b,
         type: 3}
       propertyPath: m_Name

@@ -46,6 +46,11 @@ namespace Assets.Scripts
         private void OnTriggerEnter2D(Collider2D other)
         {
             var damageDealer = other.gameObject.GetComponent<DamageDealer>();
+            if (!damageDealer)
+            {
+                return;
+            }
+
             ProcessHit(damageDealer);
         }
 
