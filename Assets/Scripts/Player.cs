@@ -15,6 +15,12 @@ namespace Assets.Scripts
         [SerializeField] private float projectileSpeed = 10f;
         [SerializeField] private float projectileFiringPeriod = 0.1f;
 
+        [Header("Sound effects")]
+        [SerializeField] private AudioClip deathSound;
+        [SerializeField] [Range(0, 1)] private float deathSoundVolume = 0.75f;
+        [SerializeField] private AudioClip shootSound;
+        [SerializeField] [Range(0, 1)] private float shootSoundVolume = 0.75f;
+
         private float _xMin;
         private float _xMax;
         private float _yMin;
@@ -79,6 +85,7 @@ namespace Assets.Scripts
                     Quaternion.identity);
 
                 laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, projectileSpeed);
+                AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position, shootSoundVolume);
 
                 yield return new WaitForSeconds(projectileFiringPeriod);
             }
@@ -100,8 +107,14 @@ namespace Assets.Scripts
 
             if (health <= 0)
             {
-                Destroy(gameObject);
+                Die();
             }
+        }
+
+        private  void Die()
+        {
+            Destroy(gameObject);
+            AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position, deathSoundVolume);
         }
     }
 }

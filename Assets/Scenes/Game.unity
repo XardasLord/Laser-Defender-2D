@@ -291,6 +291,75 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundScrollSpeed: 0.02
+--- !u!1001 &712132824
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2739971313336029521, guid: 90ab971eabc8b3b4189bb215f72154dd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2739971313336029521, guid: 90ab971eabc8b3b4189bb215f72154dd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -11.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 2739971313336029521, guid: 90ab971eabc8b3b4189bb215f72154dd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2739971313336029521, guid: 90ab971eabc8b3b4189bb215f72154dd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2739971313336029521, guid: 90ab971eabc8b3b4189bb215f72154dd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2739971313336029521, guid: 90ab971eabc8b3b4189bb215f72154dd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2739971313336029521, guid: 90ab971eabc8b3b4189bb215f72154dd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2739971313336029521, guid: 90ab971eabc8b3b4189bb215f72154dd,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2739971313336029521, guid: 90ab971eabc8b3b4189bb215f72154dd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2739971313336029521, guid: 90ab971eabc8b3b4189bb215f72154dd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2739971313336029521, guid: 90ab971eabc8b3b4189bb215f72154dd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2739971313336029523, guid: 90ab971eabc8b3b4189bb215f72154dd,
+        type: 3}
+      propertyPath: m_Name
+      value: Laser Shredder Bottom
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 90ab971eabc8b3b4189bb215f72154dd, type: 3}
 --- !u!1 &729841450
 GameObject:
   m_ObjectHideFlags: 0
@@ -753,7 +822,7 @@ PrefabInstance:
     - target: {fileID: 2739971313336029523, guid: 90ab971eabc8b3b4189bb215f72154dd,
         type: 3}
       propertyPath: m_Name
-      value: Laser Shredder
+      value: Laser Shredder Top
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90ab971eabc8b3b4189bb215f72154dd, type: 3}
