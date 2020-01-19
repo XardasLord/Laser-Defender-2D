@@ -4,12 +4,25 @@ namespace Assets.Scripts
 {
     public class Enemy : MonoBehaviour
     {
+        [Header("Enemy")]
         [SerializeField] private float health = 100;
+
+        [Header("Shooting")]
         [SerializeField] private float shotCounter;
         [SerializeField] private float minTimeBetweenShots = 0.2f;
         [SerializeField] private float maxTimeBetweenShots = 3f;
+
+        [Header("Projectile")]
         [SerializeField] private GameObject projectile;
         [SerializeField] private float projectileSpeed = 10f;
+        [SerializeField] private GameObject deathVFX;
+        [SerializeField] private float durationOfExplosion = 1f;
+
+        [Header("Sound effects")]
+        [SerializeField] private AudioClip deathSound;
+        [SerializeField] [Range(0,1)] private float deathSoundVolume = 0.75f;
+        [SerializeField] private AudioClip shootSound;
+        [SerializeField] [Range(0, 1)] private float shootSoundVolume = 0.75f;
 
         // Start is called before the first frame update
         void Start()
@@ -30,6 +43,7 @@ namespace Assets.Scripts
             {
                 Fire();
                 shotCounter = Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
+                AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position, shootSoundVolume);
             }
         }
 
@@ -61,8 +75,16 @@ namespace Assets.Scripts
 
             if (health <= 0)
             {
-                Destroy(gameObject);
+                Die();
             }
+        }
+
+        private void Die()
+        {
+            Destroy(gameObject);
+            var explosion = Instantiate(deathVFX, transform.position, transform.rotation);
+            Destroy(explosion, durationOfExplosion);
+            AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position, deathSoundVolume);
         }
     }
 }
