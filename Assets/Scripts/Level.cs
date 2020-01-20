@@ -1,13 +1,16 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts
 {
     public class Level : MonoBehaviour
     {
-        public void LoadGameOver()
+        [SerializeField] private float delayInSeconds = 2f;
+
+        public void LoadStartMenu()
         {
-            SceneManager.LoadScene("Game Over");
+            SceneManager.LoadScene(0);
         }
 
         public void LoadGame()
@@ -15,14 +18,20 @@ namespace Assets.Scripts
             SceneManager.LoadScene("Game");
         }
 
-        public void LoadStartMenu()
+        public void LoadGameOver()
         {
-            SceneManager.LoadScene(0);
+            StartCoroutine(WaitAndLoad());
         }
 
         public void QuitGame()
         {
             Application.Quit();
+        }
+
+        private IEnumerator WaitAndLoad()
+        {
+            yield return new WaitForSeconds(delayInSeconds);
+            SceneManager.LoadScene("Game Over");
         }
     }
 }
