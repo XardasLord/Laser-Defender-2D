@@ -6,6 +6,7 @@ namespace Assets.Scripts
     {
         [Header("Enemy")]
         [SerializeField] private float health = 100;
+        [SerializeField] private int scoreValue = 50;
 
         [Header("Shooting")]
         [SerializeField] private float shotCounter;
@@ -81,6 +82,7 @@ namespace Assets.Scripts
 
         private void Die()
         {
+            FindObjectOfType<GameSession>().AddScore(scoreValue);
             Destroy(gameObject);
             var explosion = Instantiate(deathVFX, transform.position, transform.rotation);
             Destroy(explosion, durationOfExplosion);
