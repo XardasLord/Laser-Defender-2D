@@ -6,9 +6,9 @@ namespace Assets.Scripts
     {
         [Header("Enemy")]
         [SerializeField] private float health = 100;
+        [SerializeField] private int scoreValue = 50;
 
         [Header("Shooting")]
-        [SerializeField] private float shotCounter;
         [SerializeField] private float minTimeBetweenShots = 0.2f;
         [SerializeField] private float maxTimeBetweenShots = 3f;
 
@@ -23,11 +23,19 @@ namespace Assets.Scripts
         [SerializeField] [Range(0,1)] private float deathSoundVolume = 0.75f;
         [SerializeField] private AudioClip shootSound;
         [SerializeField] [Range(0, 1)] private float shootSoundVolume = 0.75f;
+        [SerializeField] private AudioClip enterSound;
+
+        private float _shotCounter;
 
         // Start is called before the first frame update
         void Start()
         {
-            shotCounter = Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
+            _shotCounter = Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
+
+            if (enterSound != null)
+            {
+                AudioSource.PlayClipAtPoint(enterSound, Camera.main.transform.position);
+            }
         }
 
         // Update is called once per frame
@@ -38,11 +46,11 @@ namespace Assets.Scripts
 
         private void CountDownAndShoot()
         {
-            shotCounter -= Time.deltaTime;
-            if (shotCounter <= 0f)
+            _shotCounter -= Time.deltaTime;
+            if (_shotCounter <= 0f)
             {
                 Fire();
-                shotCounter = Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
+                _shotCounter = Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
                 AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position, shootSoundVolume);
             }
         }
@@ -81,6 +89,7 @@ namespace Assets.Scripts
 
         private void Die()
         {
+            FindObjectOfType<GameSession>().AddScore(scoreValue);
             Destroy(gameObject);
             var explosion = Instantiate(deathVFX, transform.position, transform.rotation);
             Destroy(explosion, durationOfExplosion);

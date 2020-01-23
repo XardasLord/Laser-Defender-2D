@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 200
-  shotCounter: 0
+  scoreValue: 100
   minTimeBetweenShots: 0.5
   maxTimeBetweenShots: 1.5
   projectile: {fileID: 7744747290283319586, guid: ae390e2f6bb44f7488c186c2e9570d82,
@@ -122,7 +122,8 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: 0f5101c9d07a09b459cb7f09f63000ba, type: 3}
   deathSoundVolume: 0.75
   shootSound: {fileID: 8300000, guid: 26379e9812e66e2448c47f5ec53b6f32, type: 3}
-  shootSoundVolume: 0.5
+  shootSoundVolume: 0.25
+  enterSound: {fileID: 0}
 --- !u!114 &-8326086865481657972
 MonoBehaviour:
   m_ObjectHideFlags: 0
