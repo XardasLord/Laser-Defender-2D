@@ -107,15 +107,21 @@ namespace Assets.Scripts
 
             if (health <= 0)
             {
+                health = 0;
                 Die();
             }
         }
 
-        private  void Die()
+        private void Die()
         {
             FindObjectOfType<Level>().LoadGameOver();
             Destroy(gameObject);
             AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position, deathSoundVolume);
+        }
+
+        public int GetHealth()
+        {
+            return health;
         }
     }
 }
