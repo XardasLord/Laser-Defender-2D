@@ -12,7 +12,9 @@ GameObject:
   - component: {fileID: 4118395634425156306}
   - component: {fileID: 8621453121357828064}
   - component: {fileID: 4855541191690926177}
+  - component: {fileID: -8326086865481657972}
   - component: {fileID: 3182801775843011516}
+  - component: {fileID: -5302988256521178037}
   m_Layer: 9
   m_Name: Enemy Blue
   m_TagString: Untagged
@@ -108,7 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 200
-  shotCounter: 0
+  scoreValue: 100
   minTimeBetweenShots: 0.5
   maxTimeBetweenShots: 1.5
   projectile: {fileID: 7744747290283319586, guid: ae390e2f6bb44f7488c186c2e9570d82,
@@ -120,7 +122,21 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: 0f5101c9d07a09b459cb7f09f63000ba, type: 3}
   deathSoundVolume: 0.75
   shootSound: {fileID: 8300000, guid: 26379e9812e66e2448c47f5ec53b6f32, type: 3}
-  shootSoundVolume: 0.5
+  shootSoundVolume: 0.25
+  enterSound: {fileID: 0}
+--- !u!114 &-8326086865481657972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4118395634425156305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0485b058ee761e448b3a52569f3a681c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 200
 --- !u!58 &3182801775843011516
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -137,3 +153,24 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.022923708}
   serializedVersion: 2
   m_Radius: 0.35887027
+--- !u!50 &-5302988256521178037
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4118395634425156305}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
