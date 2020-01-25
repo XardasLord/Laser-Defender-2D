@@ -8,12 +8,12 @@ namespace Assets.Scripts
     {
         [SerializeField] private float delayInSeconds = 2f;
 
-        private void Start()
+        private void Awake()
         {
             var playerComponent = FindObjectOfType<Player>();
             if (playerComponent != null)
             {
-                playerComponent.OnDie += HandlePlayerDeath;
+                playerComponent.OnDied += HandlePlayerDeath;
             }
         }
 

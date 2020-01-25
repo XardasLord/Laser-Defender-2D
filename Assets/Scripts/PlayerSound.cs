@@ -4,29 +4,21 @@ namespace Assets.Scripts
 {
     public class PlayerSound : MonoBehaviour
     {
-        [SerializeField]
-        private AudioClip deathSound;
+        [SerializeField] private AudioClip deathSound;
+        [SerializeField] private AudioClip shootSound;
 
         [SerializeField]
-        [Range(0, 1)]
+        [Range(0, 1)] 
         private float deathSoundVolume = 0.75f;
 
         [SerializeField] 
-        private AudioClip shootSound;
-
-        [SerializeField] [Range(0, 1)] 
+        [Range(0, 1)] 
         private float shootSoundVolume = 0.75f;
 
-        private void Start()
+        private void Awake()
         {
-            GetComponent<Player>().OnDie += HandlePlayerDeath;
-            GetComponent<PlayerProjectileLauncher>().OnStartFire += HandleFireStart;
-        }
-
-        private void OnDestroy()
-        {
-            GetComponent<Player>().OnDie -= HandlePlayerDeath;
-            GetComponent<PlayerProjectileLauncher>().OnStartFire -= HandleFireStart;
+            GetComponent<Player>().OnDied += HandlePlayerDeath;
+            GetComponent<PlayerProjectileLauncher>().OnFireStarted += HandleFire;
         }
 
         private void HandlePlayerDeath()
@@ -34,7 +26,7 @@ namespace Assets.Scripts
             AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position, deathSoundVolume);
         }
 
-        private void HandleFireStart()
+        private void HandleFire()
         {
             AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position, shootSoundVolume);
         }

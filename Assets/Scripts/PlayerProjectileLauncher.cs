@@ -11,20 +11,20 @@ namespace Assets.Scripts
 
         private float _fireCooldown;
 
-        public event Action OnStartFire = delegate { };
+        public event Action OnFireStarted = delegate { };
 
-        private void Start()
+        private void Awake()
         {
-            GetComponent<Player>().OnFire += HandleFire;
-        }
-
-        private void OnDestroy()
-        {
-            GetComponent<Player>().OnFire -= HandleFire;
+            GetComponent<PlayerInput>().OnFired += HandleFire;
         }
 
         private void HandleFire()
         {
+            if (!CanFire())
+            {
+                return;
+            }
+            
             var laser = Instantiate(
                 laserPrefab,
                 transform.position,
@@ -34,10 +34,10 @@ namespace Assets.Scripts
 
             _fireCooldown = Time.time + projectileFiringPeriod;
 
-            OnStartFire();
+            OnFireStarted();
         }
 
-        public bool CanFire()
+        private bool CanFire()
         {
             return Time.time > _fireCooldown;
         }
