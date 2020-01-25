@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 9042999755172361359}
   - component: {fileID: 9042999755172361352}
   - component: {fileID: 9042999755172361353}
+  - component: {fileID: 4422035502806708766}
+  - component: {fileID: 1680742567007444751}
+  - component: {fileID: -5434227583965837162}
   - component: {fileID: 4454373609151417791}
   m_Layer: 8
   m_Name: Player
@@ -94,17 +97,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3487a4151dc12c948b099f6f3ffcb31d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 200
+--- !u!114 &4422035502806708766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9042999755172361358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42284b7c9046825488d792a04c1ac9f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   moveSpeed: 8
   padding: 1
-  health: 200
+--- !u!114 &1680742567007444751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9042999755172361358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6d3bdfee4573a34396f565c4ac90b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   laserPrefab: {fileID: 3896831789751179279, guid: 94bd428470aba574aa875b9fcb4ee0e5,
     type: 3}
   projectileSpeed: 10
   projectileFiringPeriod: 0.1
+--- !u!114 &-5434227583965837162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9042999755172361358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ae6089caeed64046875692f78d15622, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   deathSound: {fileID: 8300000, guid: bf0ac74a8d9432b458de4c3477d67334, type: 3}
-  deathSoundVolume: 0.75
-  shootSound: {fileID: 8300000, guid: 081d8c2fe15fb274b931d36acb325104, type: 3}
-  shootSoundVolume: 0.15
+  deathSoundVolume: 0.65
+  shootSound: {fileID: 8300000, guid: c90b1b765a63cb64b904ded909441b83, type: 3}
+  shootSoundVolume: 0.65
 --- !u!60 &4454373609151417791
 PolygonCollider2D:
   m_ObjectHideFlags: 0

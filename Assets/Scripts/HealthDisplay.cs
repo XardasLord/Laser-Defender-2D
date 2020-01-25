@@ -16,7 +16,7 @@ namespace Assets.Scripts
 
         private void Update()
         {
-            _healthText.text = _player.GetHealth().ToString();
+            _healthText.text = _player.Health.ToString();
         }
     }
 }
