@@ -9,6 +9,8 @@ namespace Assets.Scripts
         private void Awake()
         {
             SetUpSingleton();
+            
+            Enemy.OnDied += HandleEnemyDie;
         }
 
         private void SetUpSingleton()
@@ -36,6 +38,11 @@ namespace Assets.Scripts
         public void ResetGame()
         {
             Destroy(gameObject);
+        }
+
+        private void HandleEnemyDie(Enemy enemy)
+        {
+            AddScore(enemy.ScoreValue);
         }
     }
 }

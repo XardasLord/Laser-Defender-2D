@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Assets.Scripts
 {
@@ -7,38 +9,28 @@ namespace Assets.Scripts
         [Header("Enemy")]
         [SerializeField] private float health = 100;
         [SerializeField] private int scoreValue = 50;
+        [SerializeField] private bool isBoss;
 
         [Header("Shooting")]
-        [SerializeField] private float minTimeBetweenShots = 0.2f;
+        [SerializeField] private float minTimeBetweenShots = 0.5f;
         [SerializeField] private float maxTimeBetweenShots = 3f;
 
-        [Header("Projectile")]
-        [SerializeField] private GameObject projectile;
-        [SerializeField] private float projectileSpeed = 10f;
-        [SerializeField] private GameObject deathVFX;
-        [SerializeField] private float durationOfExplosion = 1f;
+        public bool IsBoss => isBoss;
+        public int ScoreValue => scoreValue;
 
-        [Header("Sound effects")]
-        [SerializeField] private AudioClip deathSound;
-        [SerializeField] [Range(0,1)] private float deathSoundVolume = 0.75f;
-        [SerializeField] private AudioClip shootSound;
-        [SerializeField] [Range(0, 1)] private float shootSoundVolume = 0.75f;
-        [SerializeField] private AudioClip enterSound;
+        public event Action<Enemy> OnSpawned = delegate { };
+        public static event Action<Enemy> OnDied = delegate { };
+        public event Action OnFired = delegate { };
 
         private float _shotCounter;
 
-        // Start is called before the first frame update
         void Start()
         {
-            _shotCounter = Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
+            OnSpawned(this);
 
-            if (enterSound != null)
-            {
-                AudioSource.PlayClipAtPoint(enterSound, Camera.main.transform.position);
-            }
+            _shotCounter = Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
         }
 
-        // Update is called once per frame
         void Update()
         {
             CountDownAndShoot();
@@ -46,23 +38,14 @@ namespace Assets.Scripts
 
         private void CountDownAndShoot()
         {
+            // TODO: Move this logic to separate component
             _shotCounter -= Time.deltaTime;
             if (_shotCounter <= 0f)
             {
-                Fire();
+                OnFired();
+
                 _shotCounter = Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
-                AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position, shootSoundVolume);
             }
-        }
-
-        private void Fire()
-        {
-            var laser = Instantiate(
-                projectile,
-                transform.position,
-                Quaternion.identity);
-
-            laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -projectileSpeed);
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -89,11 +72,9 @@ namespace Assets.Scripts
 
         private void Die()
         {
-            FindObjectOfType<GameSession>().AddScore(scoreValue);
+            OnDied(this);
+
             Destroy(gameObject);
-            var explosion = Instantiate(deathVFX, transform.position, transform.rotation);
-            Destroy(explosion, durationOfExplosion);
-            AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position, deathSoundVolume);
         }
     }
 }
