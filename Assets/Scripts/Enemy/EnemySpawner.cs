@@ -1,14 +1,17 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.Enemy
 {
     public class EnemySpawner : MonoBehaviour
     {
         [SerializeField] private List<WaveConfig> waveConfigs;
         [SerializeField] private int startingWave = 0;
         [SerializeField] private bool looping = false;
+
+        public event Action<Enemy> OnSpawned = delegate { };
 
         // Start is called before the first frame update
         IEnumerator Start()
@@ -38,6 +41,8 @@ namespace Assets.Scripts
                     Quaternion.identity);
 
                 newEnemy.GetComponent<EnemyPathing>().SetWaveConfig(waveConfig);
+
+                OnSpawned(newEnemy.GetComponent<Enemy>());
 
                 yield return new WaitForSeconds(waveConfig.GetTimeBetweenSpawns());
             }

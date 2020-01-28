@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Enemy;
+using UnityEngine;
 
 namespace Assets.Scripts
 {
@@ -9,6 +10,8 @@ namespace Assets.Scripts
         private void Awake()
         {
             SetUpSingleton();
+
+            FindObjectOfType<EnemySpawner>().OnSpawned += HandleEnemySpawn;
         }
 
         private void SetUpSingleton()
@@ -36,6 +39,16 @@ namespace Assets.Scripts
         public void ResetGame()
         {
             Destroy(gameObject);
+        }
+
+        private void HandleEnemySpawn(Enemy.Enemy obj)
+        {
+            obj.OnDied += HandleEnemyDie;
+        }
+
+        private void HandleEnemyDie(Enemy.Enemy enemy)
+        {
+            AddScore(enemy.ScoreValue);
         }
     }
 }

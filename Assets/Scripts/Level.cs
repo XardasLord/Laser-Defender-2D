@@ -8,6 +8,15 @@ namespace Assets.Scripts
     {
         [SerializeField] private float delayInSeconds = 2f;
 
+        private void Awake()
+        {
+            var playerComponent = FindObjectOfType<Player.Player>();
+            if (playerComponent != null)
+            {
+                playerComponent.OnDied += HandlePlayerDeath;
+            }
+        }
+
         public void LoadStartMenu()
         {
             SceneManager.LoadScene(0);
@@ -33,6 +42,11 @@ namespace Assets.Scripts
         {
             yield return new WaitForSeconds(delayInSeconds);
             SceneManager.LoadScene("Game Over");
+        }
+
+        private void HandlePlayerDeath()
+        {
+            LoadGameOver();
         }
     }
 }
