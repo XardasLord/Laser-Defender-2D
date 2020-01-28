@@ -10,7 +10,7 @@ namespace Assets.Scripts
 
         private void Awake()
         {
-            var playerComponent = FindObjectOfType<Player>();
+            var playerComponent = FindObjectOfType<Player.Player>();
             if (playerComponent != null)
             {
                 playerComponent.OnDied += HandlePlayerDeath;

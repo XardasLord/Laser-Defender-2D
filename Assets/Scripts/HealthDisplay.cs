@@ -6,12 +6,12 @@ namespace Assets.Scripts
     public class HealthDisplay : MonoBehaviour
     {
         private Text _healthText;
-        private Player _player;
+        private Player.Player _player;
 
         private void Awake()
         {
             _healthText = GetComponent<Text>();
-            _player = FindObjectOfType<Player>();
+            _player = FindObjectOfType<Player.Player>();
 
             _healthText.text = _player.Health.ToString();
 

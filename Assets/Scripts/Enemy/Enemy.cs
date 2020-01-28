@@ -2,7 +2,7 @@
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.Enemy
 {
     public class Enemy : MonoBehaviour
     {
@@ -18,17 +18,14 @@ namespace Assets.Scripts
         public bool IsBoss => isBoss;
         public int ScoreValue => scoreValue;
 
-        public event Action<Enemy> OnSpawned = delegate { };
-        public static event Action<Enemy> OnDied = delegate { };
+        public event Action<Enemy> OnDied = delegate { };
         public event Action OnFired = delegate { };
 
         private float _shotCounter;
 
         void Start()
         {
-            OnSpawned(this);
-
-            _shotCounter = Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
+            _shotCounter = GetRandomShotCounter();
         }
 
         void Update()
@@ -44,7 +41,7 @@ namespace Assets.Scripts
             {
                 OnFired();
 
-                _shotCounter = Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
+                _shotCounter = GetRandomShotCounter();
             }
         }
 
@@ -57,6 +54,11 @@ namespace Assets.Scripts
             }
 
             ProcessHit(damageDealer);
+        }
+
+        private float GetRandomShotCounter()
+        {
+            return Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
         }
 
         private void ProcessHit(DamageDealer damageDealer)

@@ -146,17 +146,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2645514957622451412}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5525e7cafd8a874199dd16506520bd3, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f981fc6e5f23244ea12530526e18bd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  scoreValue: 20
+  scoreValue: 50
   isBoss: 0
-  minTimeBetweenShots: 0.4
+  minTimeBetweenShots: 0.5
   maxTimeBetweenShots: 3
-  deathVFX: {fileID: 5500444064966652382, guid: 4f192695d59af234cb3e79a48e233d00,
-    type: 3}
-  durationOfExplosion: 1
 --- !u!114 &-3146301365311026152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,7 +178,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2645514957622451412}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 186d64fc415867c4db9469925ee802cf, type: 3}
+  m_Script: {fileID: 11500000, guid: 4a8b534d49d540945bf85b29b9127662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   deathVFX: {fileID: 5500444064966652382, guid: 4f192695d59af234cb3e79a48e233d00,
@@ -196,13 +193,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2645514957622451412}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d82efa908a2ba9c4ca240ea5e6ca7bc6, type: 3}
+  m_Script: {fileID: 11500000, guid: 45c2db4a9585bfc4eb9431fe973d7e44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   deathSound: {fileID: 8300000, guid: 0f5101c9d07a09b459cb7f09f63000ba, type: 3}
-  deathSoundVolume: 0.5
+  deathSoundVolume: 0.75
   shootSound: {fileID: 8300000, guid: c90b1b765a63cb64b904ded909441b83, type: 3}
-  shootSoundVolume: 0.1
+  shootSoundVolume: 0.2
   spawnSound: {fileID: 0}
   spawnSoundVolume: 0.75
 --- !u!114 &4593936510912543152

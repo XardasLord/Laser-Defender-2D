@@ -9,7 +9,7 @@ namespace Assets.Scripts
 
         private void Awake()
         {
-            GetComponent<Enemy>().OnFired += HandleFire;
+            GetComponent<Enemy.Enemy>().OnFired += HandleFire;
         }
 
         private void HandleFire()
@@ -24,7 +24,7 @@ namespace Assets.Scripts
 
         private void OnDestroy()
         {
-            GetComponent<Enemy>().OnFired -= HandleFire;
+            GetComponent<Enemy.Enemy>().OnFired -= HandleFire;
         }
     }
 }

@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 9042999755172361359}
   - component: {fileID: 9042999755172361352}
   - component: {fileID: 4454373609151417791}
-  - component: {fileID: 9042999755172361353}
-  - component: {fileID: -7601621892424342897}
-  - component: {fileID: 4422035502806708766}
-  - component: {fileID: 1680742567007444751}
-  - component: {fileID: -5434227583965837162}
+  - component: {fileID: 921906549707725942}
+  - component: {fileID: -2348187877021041857}
+  - component: {fileID: -5010910492368769711}
+  - component: {fileID: -8227684837130292845}
+  - component: {fileID: -1273100087762464600}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -128,7 +128,7 @@ PolygonCollider2D:
       - {x: 0.12800513, y: -0.24651623}
       - {x: 0.42036486, y: -0.21882057}
       - {x: 0.4680616, y: -0.22036552}
---- !u!114 &9042999755172361353
+--- !u!114 &921906549707725942
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -137,11 +137,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 9042999755172361358}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3487a4151dc12c948b099f6f3ffcb31d, type: 3}
+  m_Script: {fileID: 11500000, guid: 0eaf106ec0956e34295351876ad68a0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 200
---- !u!114 &-7601621892424342897
+--- !u!114 &-2348187877021041857
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,10 +150,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 9042999755172361358}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d242706408fa1441881c4e5ff2c9fe2, type: 3}
+  m_Script: {fileID: 11500000, guid: 5432f7ebbc2ff1e48bcbc83493bbe21a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4422035502806708766
+--- !u!114 &-5010910492368769711
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,12 +162,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 9042999755172361358}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42284b7c9046825488d792a04c1ac9f2, type: 3}
+  m_Script: {fileID: 11500000, guid: d6312d4ca5fe163468a988497a58c8c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 8
   padding: 1
---- !u!114 &1680742567007444751
+--- !u!114 &-8227684837130292845
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -176,14 +176,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 9042999755172361358}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6d3bdfee4573a34396f565c4ac90b55, type: 3}
+  m_Script: {fileID: 11500000, guid: 873e7cc197e79b74fbd274e9d8034330, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   laserPrefab: {fileID: 3896831789751179279, guid: 94bd428470aba574aa875b9fcb4ee0e5,
     type: 3}
   projectileSpeed: 10
   projectileFiringPeriod: 0.1
---- !u!114 &-5434227583965837162
+--- !u!114 &-1273100087762464600
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -192,10 +192,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 9042999755172361358}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ae6089caeed64046875692f78d15622, type: 3}
+  m_Script: {fileID: 11500000, guid: 23ab4a6251d895b4788d7726eb1288ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   deathSound: {fileID: 8300000, guid: bf0ac74a8d9432b458de4c3477d67334, type: 3}
-  shootSound: {fileID: 8300000, guid: c90b1b765a63cb64b904ded909441b83, type: 3}
-  deathSoundVolume: 0.65
-  shootSoundVolume: 0.65
+  shootSound: {fileID: 8300000, guid: 26379e9812e66e2448c47f5ec53b6f32, type: 3}
+  deathSoundVolume: 0.8
+  shootSoundVolume: 0.5

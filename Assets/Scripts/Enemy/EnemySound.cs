@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.Enemy
 {
     public class EnemySound : MonoBehaviour
     {
@@ -14,15 +14,16 @@ namespace Assets.Scripts
         private void Awake()
         {
             var enemyComponent = GetComponent<Enemy>();
+            var enemySpawner = FindObjectOfType<EnemySpawner>();
 
-            enemyComponent.OnSpawned += HandleSpawn;
+            enemySpawner.OnSpawned += HandleSpawn;
             enemyComponent.OnFired += HandleFire;
-            Enemy.OnDied += HandleDie;
+            enemyComponent.OnDied += HandleDie;
         }
 
         private void HandleSpawn(Enemy enemy)
         {
-            if (enemy.IsBoss)
+            if (enemy.IsBoss && spawnSound != null)
             {
                 AudioSource.PlayClipAtPoint(spawnSound, Camera.main.transform.position, spawnSoundVolume);
             }
@@ -41,10 +42,15 @@ namespace Assets.Scripts
         private void OnDestroy()
         {
             var enemyComponent = GetComponent<Enemy>();
+            var enemySpawner = FindObjectOfType<EnemySpawner>();
 
-            enemyComponent.OnSpawned -= HandleSpawn;
+            if (enemySpawner != null)
+            {
+                enemySpawner.OnSpawned -= HandleSpawn;
+            }
+
             enemyComponent.OnFired -= HandleFire;
-            Enemy.OnDied -= HandleDie;
+            enemyComponent.OnDied -= HandleDie;
         }
     }
 }

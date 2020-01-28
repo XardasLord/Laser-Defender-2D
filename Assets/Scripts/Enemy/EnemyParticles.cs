@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.Enemy
 {
     public class EnemyParticles : MonoBehaviour
     {
@@ -9,7 +9,7 @@ namespace Assets.Scripts
 
         private void Awake()
         {
-            Enemy.OnDied += HandleDie;
+            GetComponent<Enemy>().OnDied += HandleDie;
         }
 
         private void HandleDie(Enemy enemy)
